@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mortem
   - Bonus
+  - Malus
   layers:
   - Default
   - TransparentFX
