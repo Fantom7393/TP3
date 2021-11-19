@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Mortem
+  - Bonus
   layers:
   - Default
   - TransparentFX
@@ -11,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Accessoires
   - 
   - 
   - 
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Arriere-Plan
+    uniqueID: 3174112657
+    locked: 0
+  - name: Plateformes
+    uniqueID: 3534972629
+    locked: 0
+  - name: Avant-Plan
+    uniqueID: 1434839543
     locked: 0
