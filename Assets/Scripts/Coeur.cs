@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Coeur : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public PlayableAsset deuxiemeAnimation;
+
+    private PlayableDirector pd;
+    private Rigidbody2D rb;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        pd = GetComponent<PlayableDirector>();    
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        RobotBoyController rbc = collision.GetComponent<RobotBoyController>();
+
+        if(rbc != null)
+        {
+            ++rbc.PV;
+            rb.simulated = false;
+            pd.Play(deuxiemeAnimation, DirectorWrapMode.Hold);
+        }
     }
 }
