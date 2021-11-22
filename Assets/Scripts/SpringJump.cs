@@ -13,7 +13,6 @@ public class SpringJump : MonoBehaviour
         if(rbc != null)
         {
             pd.Play();
-            Invoke("Jump", 0.833333f);
         }
     }
 }

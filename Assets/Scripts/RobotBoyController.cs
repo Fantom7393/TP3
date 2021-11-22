@@ -1,13 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RobotBoyController : MonoBehaviour
 {
     public float vitesse;
     public float impulsion;
     public int maxPV = 5;
+    public PointsVies pvManager;
+    public AudioClip marcheMortuaire;
     public int PV { get => GetPV(); set => SetPV(value); }
 
 
@@ -18,6 +18,7 @@ public class RobotBoyController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator anim;
+    private AudioSource monAS;
     private int pv = 1;
     private bool dead = false;
 
@@ -26,6 +27,7 @@ public class RobotBoyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        monAS = GetComponent<AudioSource>();
         PV = maxPV;
     }
 
@@ -33,6 +35,12 @@ public class RobotBoyController : MonoBehaviour
     {
         if (dead)
             return;
+
+        if (transform.position.y < -25)
+        {
+            Die();
+            return;
+        }
 
         deplacement = Input.GetAxis("Horizontal");
         anim.SetFloat("Etat", Mathf.Abs(deplacement));
@@ -76,6 +84,11 @@ public class RobotBoyController : MonoBehaviour
     {
         dead = true;
         anim.SetTrigger("Mort");
+        monAS.Stop();
+        monAS.PlayOneShot(marcheMortuaire);
+        if (pv > 0)
+            pvManager.UpdatePV(0);
+        Invoke("Recommencer", 7f);
     }
 
     public bool IsDead()
@@ -85,7 +98,10 @@ public class RobotBoyController : MonoBehaviour
 
     private void SetPV(int value)
     {
+        if (dead)
+            return;
         pv = Mathf.Min(value, maxPV);
+        pvManager.UpdatePV(pv);
         if (pv < 1)
             Die();
     }
@@ -93,5 +109,10 @@ public class RobotBoyController : MonoBehaviour
     private int GetPV()
     {
         return pv;
+    }
+
+    private void Recommencer()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -53,16 +53,17 @@
     <UnityVersion>2020.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\DelayedDestruction.cs" />
+    <Compile Include="Assets\Scripts\ExplosionDamage.cs" />
+    <Compile Include="Assets\Scripts\Bombe.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
+    <Compile Include="Assets\Scripts\Coeur.cs" />
     <Compile Include="Assets\Scripts\DeathSkull.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\RobotBoyController.cs" />
     <Compile Include="Assets\Scripts\SpringJump.cs" />
     <Compile Include="Assets\Scripts\AccessoiresManager.cs" />
-    <Compile Include="Assets\Scripts\DelayedDestruction.cs" />
-    <Compile Include="Assets\Scripts\Coeur.cs" />
-    <Compile Include="Assets\Scripts\Bombe.cs" />
-    <Compile Include="Assets\Scripts\ExplosionDamage.cs" />
+    <Compile Include="Assets\Scripts\PointsVies.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Médias Accessoires\Polices\OFL.txt" />
