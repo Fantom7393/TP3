@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
         RobotBoyController rbc = collision.GetComponent<RobotBoyController>();
         if(rbc != null)
         {
-            ++rbc.PV;
+            ++rbc.Score;
             DisableComponents();
             monAS.Play();
         }
@@ -33,12 +33,12 @@ public class Coin : MonoBehaviour
 
     private void DisableComponents()
     {
-        spr.enabled = col.enabled = pd.enabled = anim.enabled = false;
+        spr.enabled = col.enabled = false;
         Invoke("EnableComponents", 30f);
     }
 
     private void EnableComponents()
     {
-        spr.enabled = col.enabled = pd.enabled = anim.enabled = true;
+        spr.enabled = col.enabled = true;
     }
 }

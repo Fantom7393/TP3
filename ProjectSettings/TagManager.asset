@@ -7,6 +7,7 @@ TagManager:
   - Mortem
   - Bonus
   - Malus
+  - Points
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,7 @@ TagManager:
     locked: 0
   - name: Avant-Plan
     uniqueID: 1434839543
+    locked: 0
+  - name: HUD
+    uniqueID: 1234748693
     locked: 0

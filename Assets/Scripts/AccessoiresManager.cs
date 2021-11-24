@@ -27,7 +27,9 @@ public class AccessoiresManager : MonoBehaviour
 
         float[] randomPoints = pointsApparition.OrderBy(x => Random.value).Take(8).ToArray();
         Instantiate(bombe, new Vector2(randomPoints[0], 24), Quaternion.identity, transform);
-        for(int i = 1; i < 8; ++i)
+        Instantiate(bombe, new Vector2(randomPoints[1], 24), Quaternion.identity, transform);
+        Instantiate(bombe, new Vector2(randomPoints[2], 24), Quaternion.identity, transform);
+        for(int i = 3; i < 8; ++i)
             Instantiate(coeur, new Vector2(randomPoints[i], 24), Quaternion.identity, transform);
     }
 }

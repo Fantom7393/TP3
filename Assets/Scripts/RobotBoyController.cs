@@ -8,7 +8,9 @@ public class RobotBoyController : MonoBehaviour
     public int maxPV = 5;
     public PointsVies pvManager;
     public AudioClip marcheMortuaire;
+    public Transform jeu; // Va servir à déparenter la plateforme du robot lorsque celui-ci saute.
     public int PV { get => GetPV(); set => SetPV(value); }
+    public uint Score { get; set; }
 
 
     private float deplacement = 0;
@@ -49,6 +51,7 @@ public class RobotBoyController : MonoBehaviour
         if (Input.GetKeyDown("w") && nbSauts < 2)
         {
             saute = true;
+            transform.SetParent(jeu);
             anim.SetTrigger("Saut");
             ++nbSauts;
         }
@@ -75,7 +78,7 @@ public class RobotBoyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void ResetJumps()
     {
         nbSauts = 0;
     }
